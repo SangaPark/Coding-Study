@@ -1,0 +1,19 @@
+
+testcase = int(input())
+
+for i in range(testcase):
+    dimension = int(input())
+    
+    ####python 2차원 배열#####
+    arr = [[1]*dimension for j in range(dimension)]
+
+    print("#", end = "")
+    print((i+1))
+    for j in range(dimension):
+        for k in range(j+1):
+            if(j >= 2 and not((k == 0) or (k == j))):
+                arr[j][k] = arr[j-1][k-1] + arr[j-1][k]
+                print(arr[j][k], end = " ")
+            else:
+                print(arr[j][k], end = " ")
+        print()
