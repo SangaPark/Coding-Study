@@ -1,0 +1,28 @@
+
+testcase = int(input())
+true = 1
+answer = []
+
+for i in range(testcase):
+    str = input()
+
+    if (len(str) % 2 == 0):
+        for j in range(int(len(str)/2)):
+            if(str[j] != str[len(str)-1-j]):
+                true = 0
+                answer.append(true)
+                break
+    else:
+        for j in range(int(len(str)/2)):
+            if(str[j] != str[len(str)-1-j]):
+                true = 0
+                answer.append(true)
+                break
+    if(true == 1):
+        answer.append(true)
+    true = 1
+
+for i in range(len(answer)):
+    print("#", end = "")
+    print((i+1), end = " ")
+    print(answer[i])
