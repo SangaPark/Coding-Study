@@ -1,0 +1,18 @@
+
+testcase = int(input())
+
+game = ['3', '6', '9']
+num = 0
+arr = [str(i) for i in range(1, testcase+1)]
+
+for i in arr:
+    for j in i:
+        if(j in game):
+            num = num + 1
+    if(num == 0):
+        print(i, end = " ")
+    else:
+        for j in range(num):
+            print("-", end = "")
+        print("", end = " ")
+    num = 0
