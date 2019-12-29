@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+
+public class sw_7087 {
+	public static void main(String[] args) throws Exception{
+		
+		//Scanner 대신 BufferedReader 사용
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder builder = new StringBuilder();
+		
+		int testcase = Integer.parseInt(bf.readLine());
+		int avail = 0;
+		char aString = 65;
+		
+		for (int i = 0; i < testcase; i++) {
+			HashSet<String> set = new HashSet<>();
+			int num = Integer.parseInt(bf.readLine());
+			
+			for (int j = 0; j < num; j++)
+				set.add(String.valueOf(bf.readLine().charAt(0)).toUpperCase());
+			//HashSet 정렬
+			ArrayList<String> list = new ArrayList<>(set);
+			Collections.sort(list);
+			
+			String arr[] = new String[set.size()];
+			for (int j = 0; j < set.size(); j++, aString++)
+				arr[j] = String.valueOf(aString); //아스키코드 문자로 변환
+			
+			
+			for (int j = 0; j < arr.length; j++) {
+				String str = String.valueOf(list.get(j));
+					if(arr[j].equals(str)) //같으면?
+						avail++; //증가
+					else break;
+			}
+			
+			builder.append("#"+(i+1)+" "+avail).append("\n");
+			avail = 0; aString = 65;
+		}
+		
+		System.out.println(builder);
+	}
+}
