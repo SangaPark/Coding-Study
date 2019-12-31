@@ -1,0 +1,45 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw1983 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder builder = new StringBuilder();
+		String grade[] = {"A+", "A0", "A-", "B+", "B0", "B-", "C+", "C0", "C-", "D0"};
+		
+		int tc = Integer.parseInt(bf.readLine());
+		for (int i = 0; i < tc; i++) {
+			String str = bf.readLine();
+			StringTokenizer st = new StringTokenizer(str, " ");
+			
+			//학생들 점수 입력 배열
+			int studentNum[] = new int[Integer.parseInt(st.nextToken())];
+			int num = Integer.parseInt(st.nextToken());
+			
+			//학생들의 중간 기말 숙제 점수
+			int mid, last, hw;
+			double score;
+			//HashMap 이용
+			HashMap<Integer, Double> map = new HashMap<>();
+			
+			for (int j = 0; j < studentNum.length; j++) {
+				str = bf.readLine();
+				st = new StringTokenizer(str, " ");
+				
+				mid = Integer.parseInt(st.nextToken());
+				last = Integer.parseInt(st.nextToken());
+				hw = Integer.parseInt(st.nextToken());
+				map.put((j+1), mid*0.35+last*0.45+hw*0.2);
+			}
+			//Value 값 정렬
+			ArrayList<Double> list = new ArrayList<>(map.values());
+			Collections.sort(list); Collections.reverse(list);
+			int index = list.indexOf(map.get(num));
+			
+			builder.append("#"+(i+1)+" ").append(grade[index/(studentNum.length/10)]).append("\n");
+		}
+		System.out.println(builder);
+	}
+}
