@@ -1,0 +1,21 @@
+import java.util.*;
+import java.io.*;
+
+public class sw7738 {
+	public static void main(String[] args) throws Exception {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			String str = br.readLine();
+			HashSet<Integer> set = new HashSet<>();
+			
+			for (int j = 0; j < str.length(); j++)
+				set.add(str.charAt(j)-'0');
+			sb.append("#"+(i+1)+" "+set.size()+"\n");
+		}
+		System.out.println(sb);
+	}
+}
