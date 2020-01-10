@@ -1,0 +1,43 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw7792 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			int n = Integer.parseInt(br.readLine());
+			
+			ArrayList<String> namelist = new ArrayList<>();
+			for (int j = 0; j < n; j++) {
+				namelist.add(br.readLine().trim());
+			}
+			Collections.sort(namelist);
+			
+			int max[] = new int[n];
+			for (int j = 0; j < n; j++) {
+				HashSet<Character> nameset = new HashSet<>();
+				String str = namelist.get(j);
+				for (int k = 0; k < str.length(); k++) {
+					if(!nameset.contains(str.charAt(k)) && str.charAt(k) != ' ')
+						nameset.add(str.charAt(k));
+				}
+				max[j] = nameset.size();
+			}
+			
+			int diverse = max[0];
+			int index = 0;
+			for (int j = 1; j < n; j++) {
+				if(diverse < max[j]) {
+					index = j; diverse = max[j];
+				}
+			}
+			sb.append("#"+(i+1)+" "+namelist.get(index)).append("\n");
+		}
+		System.out.println(sb);
+	}
+}
