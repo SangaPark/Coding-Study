@@ -1,0 +1,28 @@
+import java.util.*;
+import java.io.*;
+
+public class sw3143 {
+	public static void main(String[] args) throws Exception {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			int num = 0, index = 0;
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			String a = st.nextToken(); String b = st.nextToken();
+			
+			for (int j = 0; j <= a.length() - b.length(); j++) {
+				String str = a.substring(j, j+b.length());
+				if(str.equals(b)) {
+					j += (b.length() - 1);
+					num += 1;
+				}
+			}
+			num += (a.length() - (num * b.length()));
+			sb.append("#"+(i+1)+" "+num+"\n");
+		}
+		System.out.println(sb);
+	}
+}
