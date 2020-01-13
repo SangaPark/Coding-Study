@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.*;
+
+public class sw8104 {
+	public static void main(String[] args) throws Exception {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+			int n = Integer.parseInt(st.nextToken());
+			int k = Integer.parseInt(st.nextToken());
+			
+			int arr[][] = new int[n][k];
+			int rank = 1;
+			for (int j = 0; j < n; j++) {
+				if(j == 0 || j % 2 == 0) {
+					for (int z = 0; z < k; z++)
+						arr[j][z] = rank++;
+				}
+				else {
+					for (int z = k-1; z >= 0; z--) {
+						arr[j][z] = rank++;
+					}
+				}
+			}
+			int sum[] = new int[k];
+			sb.append("#"+(i+1)+" ");
+			for (int j = 0; j < k; j++) {
+				for (int z = 0; z < n; z++)
+					sum[j] += arr[z][j];
+				sb.append(sum[j]+" ");
+			}
+			sb.append("\n");
+		}
+		System.out.println(sb);
+	}
+}
