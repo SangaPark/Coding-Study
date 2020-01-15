@@ -1,0 +1,38 @@
+import java.util.*;
+import java.io.*;
+
+public class sw3499 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+			int n = Integer.parseInt(st.nextToken());
+			
+			ArrayList<String> list = new ArrayList<>();
+			int index[] = new int[n];
+			st = new StringTokenizer(br.readLine().trim(), " ");
+			for (int j = 0; j < n; j++)
+				list.add(st.nextToken());
+			if(n % 2 == 0) {//n이 짝수일 때
+				for (int j = (n/2)-1; j > 0; j--) {
+					list.add((2*j+1), list.get(j));
+					list.remove(j);
+				}
+			} else {
+				for (int j = (n/2); j > 0; j--) {
+					list.add((2*j+1), list.get(j));
+					list.remove(j);
+				}
+			}
+			sb.append("#"+(i+1)+" ");
+			for (int j = 0; j < n; j++)
+				sb.append(list.get(j)+" ");
+			sb.append("\n");
+		}
+		System.out.println(sb);
+	}
+}
