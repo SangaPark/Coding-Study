@@ -1,0 +1,25 @@
+import java.util.*;
+import java.io.*;
+
+public class sw3314 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+			int score[] = new int[5];
+			double avg = 0;
+			for (int j = 0; j < 5; j++) {
+				score[j] = Integer.parseInt(st.nextToken());
+				if (score[j] < 40)
+					score[j] = 40;
+				avg += score[j];
+			}
+			sb.append("#"+(i+1)+" "+((int)(avg/5))).append("\n"); //소수점 버리기
+		}
+		System.out.println(sb);
+	}
+}
