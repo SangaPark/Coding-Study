@@ -15,7 +15,7 @@ public class sw9317 {
 			char answer[] = br.readLine().toCharArray();
 			char SeokChan[] = br.readLine().toCharArray();
 			
-			for (int j = 0; j < answer.length; j++) {
+			for (int j = 0; j < answer.length; j++) { //같으면 수 
 				if(answer[j] == SeokChan[j]) num++;
 			}
 			
