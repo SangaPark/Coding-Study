@@ -1,0 +1,55 @@
+import java.util.*;
+import java.io.*;
+
+public class sw7732 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			String start = br.readLine();
+			String end = br.readLine();
+			
+			int shour = Integer.parseInt(start.substring(0, 2));
+			int smin = Integer.parseInt(start.substring(3,5));
+			int ssecond = Integer.parseInt(start.substring(6,8));
+			
+			int ehour = Integer.parseInt(end.substring(0,2));
+			int emin = Integer.parseInt(end.substring(3,5));
+			int esecond = Integer.parseInt(end.substring(6,8));
+			
+			String hour, min, second;
+			//초 계산
+			if (esecond >= ssecond) second = String.valueOf(esecond - ssecond);
+			else {
+				emin--;
+				second = String.valueOf(60 + esecond - ssecond);
+			}
+			//분 계산
+			if (emin >= smin) min = String.valueOf(emin - smin);
+			else {
+				ehour--;
+				min = String.valueOf(60 + emin - smin);
+			}
+			//시 계산
+			if (ehour >= shour) hour = String.valueOf(ehour - shour);
+			else {
+				hour = String.valueOf(24 + ehour - shour);
+			}
+			
+			sb.append("#"+(i+1)+" ");
+			if(hour.length() == 2) sb.append(hour+":");
+			else sb.append("0"+hour+":");
+			
+			if(min.length() == 2) sb.append(min+":");
+			else sb.append("0"+min+":");
+			
+			if(second.length() == 2) sb.append(second).append("\n");
+			else sb.append("0"+second).append("\n");
+			
+		}
+		System.out.println(sb);
+	}
+}
