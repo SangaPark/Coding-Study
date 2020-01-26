@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+
+public class sw7088 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		StringTokenizer st;
+		for (int i = 0; i < tc; i++) {
+			sb.append("#"+(i+1)+"\n");
+			st = new StringTokenizer(br.readLine(), " ");
+			int n = Integer.parseInt(st.nextToken());
+			int q = Integer.parseInt(st.nextToken());
+			
+			int arr[][] = new int[3][n+1];
+			for (int j = 1; j <= n; j++) {
+				arr[Integer.parseInt(br.readLine())-1][j]++;
+				
+				arr[0][j] += arr[0][j-1];
+				arr[1][j] += arr[1][j-1];
+				arr[2][j] += arr[2][j-1];
+			}
+			
+			for (int j = 0; j < q; j++) {
+				st = new StringTokenizer(br.readLine(), " ");
+				int start = Integer.parseInt(st.nextToken());
+				int end = Integer.parseInt(st.nextToken());
+				
+				for (int k = 0; k < 3; k++)
+					sb.append((arr[k][end] - arr[k][start-1])+" ");
+				sb.append("\n");
+			}
+		}
+		System.out.println(sb);
+	}
+}
