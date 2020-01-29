@@ -1,0 +1,36 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw9229 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		StringTokenizer st;
+		for (int i = 0; i < tc; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int n = Integer.parseInt(st.nextToken());
+			int m = Integer.parseInt(st.nextToken());
+			
+			st = new StringTokenizer(br.readLine(), " ");
+			int arr[] = new int[n];
+			for (int j = 0; j < n; j++) {
+				arr[j] = Integer.parseInt(st.nextToken());
+			}
+			ArrayList<Integer> list = new ArrayList<>();
+			
+			for (int j = 0; j < arr.length; j++) {
+				for (int k = j+1; k < arr.length; k++) {
+					if(arr[j]+arr[k] <= m) list.add(arr[j]+arr[k]);
+				}
+			}
+			
+			if(list.size() == 0) sb.append("#"+(i+1)+" -1\n");
+			else sb.append("#"+(i+1)+" "+Collections.max(list)+"\n");
+		}
+		System.out.println(sb);
+	}
+}
