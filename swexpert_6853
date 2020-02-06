@@ -1,0 +1,42 @@
+import java.util.*;
+import java.io.*;
+
+public class sw6853 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int tc = Integer.parseInt(br.readLine());
+		StringTokenizer st;
+		for (int i = 0; i < tc; i++) {
+			st = new StringTokenizer(br.readLine().trim(), " ");
+			int x1 = Integer.parseInt(st.nextToken());
+			int y1 = Integer.parseInt(st.nextToken());
+			int x2 = Integer.parseInt(st.nextToken());
+			int y2 = Integer.parseInt(st.nextToken());
+			
+			int num = Integer.parseInt(br.readLine());
+			int in = 0, out = 0, mid = 0;
+			for (int j = 0; j < num; j++) {
+				st = new StringTokenizer(br.readLine().trim(), " ");
+				
+				int x = Integer.parseInt(st.nextToken());
+				int y = Integer.parseInt(st.nextToken());
+				
+				if (x == x1 || x == x2) {
+					if (y >= y1 && y <= y2) mid++;
+					else out++;
+				}
+				else if (y == y1 || y == y2) {
+					if (x >= x1 && x <= x2) mid++;
+					else out++;
+				}
+				else if ((x > x1 && x < x2) && (y > y1 && y < y2)) in++;
+				else out++;
+			}
+			sb.append("#"+(i+1)+" "+in+" "+mid+" "+out+"\n");
+		}
+		System.out.println(sb);
+	}
+}
