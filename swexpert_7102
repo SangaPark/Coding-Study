@@ -1,0 +1,42 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw7102 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		StringTokenizer st;
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			sb.append("#"+(i+1)+" ");
+			
+			st = new StringTokenizer(br.readLine().trim(), " ");
+			int n = Integer.parseInt(st.nextToken());
+			int m = Integer.parseInt(st.nextToken());
+			
+			int arr[] = new int[n+m+1];
+			
+			for (int j = 1; j <= n; j++) {
+				for (int k = 1; k <= m; k++)
+					arr[j+k]++;
+			}
+			
+			int max = arr[1];
+			for (int j = 2; j < arr.length; j++) { //최대값 구하기
+				if (max < arr[j]) {
+					max = arr[j];
+				}
+			}
+
+			for (int j = 1; j < arr.length; j++) {
+				if (arr[j] == max) sb.append(j+" ");
+			}
+			sb.append("\n");
+			
+		}
+		System.out.println(sb);
+	}
+}
