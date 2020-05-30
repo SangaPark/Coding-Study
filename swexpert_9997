@@ -1,0 +1,17 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw9997 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			int num = Integer.parseInt(br.readLine());
+			
+			System.out.println("#"+(i+1)+" "+(num*2/60)+" "+(num*2%60));
+		}
+	}
+}
