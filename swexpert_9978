@@ -1,0 +1,34 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw9978 {
+	public static void main(String[] args) throws Exception {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int tc = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < tc; i++ ) {
+			int num = Integer.parseInt(br.readLine());
+			int card[] = {0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 16, 4};
+			String result = "GAZUA";
+			int sum = 0;
+			
+			for (int j = 0; j < num; j++) {
+				int choose = Integer.parseInt(br.readLine());
+				card[choose] -= 1;
+				sum += choose;
+			}
+			
+			sum = 21 - sum;
+			
+			int left = 0;
+			for (int j = sum+1; j < card.length; j++) {
+				left += card[j];
+			}
+			
+			if(left >= (52-left)) result = "STOP";
+			System.out.println("#"+(i+1)+" "+result);
+		}
+	}
+}
