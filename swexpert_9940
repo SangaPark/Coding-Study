@@ -1,0 +1,29 @@
+
+import java.util.*;
+import java.io.*;
+
+public class sw9940 {
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+				
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			int n = Integer.parseInt(br.readLine());
+			int arr[] = new int[n+1];
+			String result = "Yes";
+			st = new StringTokenizer(br.readLine().trim(), " ");
+			
+			for (int j = 1; j <= n; j++) {
+				int index = Integer.parseInt(st.nextToken());
+				if (arr[index] == 0 && (index >= 1 && index <= n))
+					arr[index] = 1;
+				else {
+					result = "No"; break;
+				}
+			}
+			System.out.println("#"+(i+1)+" "+result);
+		}
+	}
+}
