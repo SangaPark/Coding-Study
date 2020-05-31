@@ -1,0 +1,27 @@
+//Greedy 알고리즘
+import java.util.*;
+import java.io.*;
+
+public class baek1138 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int pNum = Integer.parseInt(br.readLine().trim());
+		StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+		
+		int arr[] = new int[pNum];
+		List<Integer> list = new ArrayList<>();
+		
+		for (int i = 0; i < pNum; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		for (int i = pNum-1; i >= 0; i--) {
+			list.add(arr[i], (i+1));
+		}
+		
+		for (int i = 0; i < list.size(); i++)
+			System.out.print(list.get(i)+" ");
+	}
+}
