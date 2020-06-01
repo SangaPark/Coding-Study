@@ -1,0 +1,24 @@
+//Greedy 알고리즘
+import java.util.*;
+import java.io.*;
+
+public class baek5585 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int money = Integer.parseInt(br.readLine());
+		int sum = 0;
+		int arr[] = {500, 100, 50, 10, 5, 1};
+		
+		money = (1000-money);
+		for (int i = 0; i < arr.length; i++) {
+			if(money >= arr[i]) {
+				sum += (money / arr[i]);
+				money %= arr[i];
+			}
+		}
+		
+		System.out.println(sum);
+	}
+}
