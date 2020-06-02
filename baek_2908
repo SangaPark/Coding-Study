@@ -1,0 +1,26 @@
+//String
+
+import java.util.*;
+import java.io.*;
+
+public class baek2908 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		String num1 = st.nextToken(); String num2 = st.nextToken();
+		
+		for (int i = 2; i >= 0; i--) {
+			if (num1.charAt(i) > num2.charAt(i)) {
+				for (int j = 2; j >= 0; j--)
+					System.out.print(num1.charAt(j));
+				break;
+			} else if (num1.charAt(i) < num2.charAt(i)) {
+				for (int j = 2; j >= 0; j--)
+					System.out.print(num2.charAt(j));
+				break;
+			}
+		}
+	}
+}
