@@ -1,0 +1,39 @@
+
+//String처리
+
+import java.io.*;
+import java.util.*;
+
+public class baek1032 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCase = Integer.parseInt(br.readLine());
+		
+		String arr[] = new String[testCase];
+		for (int i = 0; i < testCase; i++) { //String 입력
+			arr[i] = br.readLine();
+		}
+		
+		String result = "";
+		boolean isSame = true;
+		
+		for (int i = 0; i < arr[0].length(); i++) {
+			char comChar = arr[0].charAt(i);
+			
+			for (int j = 1; j < testCase; j++) {
+				if (comChar != arr[j].charAt(i)) {
+					isSame = false;
+					break;
+				}
+			}
+			
+			if (isSame == false) result += "?";
+			else result += String.valueOf(arr[0].charAt(i));
+			
+			isSame = true;
+		}
+		
+		System.out.println(result);
+	}
+}
