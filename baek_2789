@@ -1,0 +1,33 @@
+
+//String 처리
+import java.util.*;
+import java.io.*;
+
+public class baek2789 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		char arr[] = "CAMBRIDGE".toCharArray();
+		String str = br.readLine();
+		String answer = "";
+		boolean istrue = true;
+		
+		for (int i = 0; i < str.length(); i++) {
+			char comChar = str.charAt(i);
+			
+			for (int j = 0; j < arr.length; j++) {
+				if (comChar == arr[j]) {
+					istrue = false;
+					break;
+				}
+			}
+			
+			if (istrue == true) answer += String.valueOf(comChar);
+			
+			istrue = true;
+		}
+		
+		System.out.println(answer);
+	}
+}
