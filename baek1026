@@ -1,0 +1,59 @@
+
+//Greedy
+import java.util.*;
+import java.io.*;
+
+public class baek1026 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//길이가 N인 정수 배열 A와 B
+		//A를 재배열해서 S값을 최소로 만드는 코드(단 B는 재배열 하면 안됨)
+		//S = A[0]*B[0]+ .... + A[N-1]*B[N-1]
+		int N = Integer.parseInt(br.readLine());
+		int A[] = new int[N];
+		int B[] = new int[N];
+		int S = 0;
+		
+		StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+		for (int i = 0; i < N; i++) //A배열 값 받기
+			A[i] = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine().trim(), " ");
+		for (int i = 0; i < N; i++) //B배열 값 받기
+			B[i] = Integer.parseInt(st.nextToken());
+		
+		Arrays.sort(A); //A값 정렬
+		
+		int arr[] = new int[N];
+		
+		for (int i = 0; i < N; i++) //B와 똑같은 배열 하나 생성
+			arr[i] = B[i];
+		
+		int temp = 0;
+		for (int i = 0; i < B.length-1; i++) { //B를 선택정렬로 정렬
+			for (int j = i; j < B.length; j++) {
+				if (B[i] > B[j]) {
+					temp = B[j];
+					B[j] = B[i];
+					B[i] = temp;
+				}	
+			}
+		}
+		
+		int index = N-1;
+		for (int i = 0; i < N; i++) {
+			int min = B[i];
+			
+			for (int j = 0; j < N; j++) {
+				if (min == arr[j]) {
+					S += (B[i] * A[index--]); //A[i]*B[i] 값을 S로 저장
+					break;
+				}
+			}
+		}
+		
+		System.out.println(S); //가장 작은 S값 출력
+	}
+}
