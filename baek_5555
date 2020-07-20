@@ -1,0 +1,31 @@
+
+import java.util.*;
+import java.io.*;
+
+public class baek5555 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String banzi = br.readLine();
+
+		int num = Integer.parseInt(br.readLine());
+		String arr[] = new String[num];
+		for (int i = 0; i < num; i++) {
+			arr[i] = br.readLine();
+			String temp = "";
+			
+			for (int j = 0; j < banzi.length(); j++) {
+				temp += String.valueOf(arr[i].charAt(j));
+			}
+			arr[i] += temp;
+		}
+		
+		int sum = 0; //반지개수
+		for (int i = 0; i < arr.length; i++) {
+			
+			if(arr[i].contains(banzi)) sum += 1;
+		}
+		
+		System.out.println(sum);
+	}
+}
