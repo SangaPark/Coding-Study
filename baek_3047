@@ -1,0 +1,24 @@
+
+import java.util.*;
+import java.io.*;
+
+public class baek3047 {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine().trim(), " ");
+		
+		int arr[] = new int[st.countTokens()];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(arr);
+		
+		String str = br.readLine();
+		
+		for (int i = 0; i < str.length(); i++) {
+			System.out.print(arr[str.charAt(i)-65]+" ");
+		}
+	}
+}
